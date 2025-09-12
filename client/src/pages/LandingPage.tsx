@@ -16,15 +16,38 @@ export default function LandingPage() {
     });
   };
 
-  const handleFormSubmit = (data: any) => {
-    // todo: remove mock functionality - integrate with real backend
-    console.log('Contact form submitted:', data);
-    
-    // Simulate email sending
-    toast({
-      title: "Welcome to the waitlist!",
-      description: "We'll notify you as soon as we launch.",
-    });
+  const handleFormSubmit = async (data: any) => {
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Welcome to the waitlist!",
+          description: "We'll notify you as soon as we launch.",
+        });
+      } else {
+        toast({
+          title: "Something went wrong",
+          description: result.message || "Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Network error",
+        description: "Please check your connection and try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleGetStarted = (capability: string) => {
