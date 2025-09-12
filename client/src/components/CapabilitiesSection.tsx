@@ -53,70 +53,57 @@ export default function CapabilitiesSection({ onGetStartedClick }: CapabilitiesS
   };
 
   return (
-    <section id="capabilities" className="py-16 md:py-24 bg-background">
+    <section id="capabilities" className="py-16 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header - Mobile First */}
+        {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 font-sans" data-testid="text-capabilities-headline">
-            Platform Capabilities
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 font-sans" data-testid="text-capabilities-headline">
+            Three Simple Ways to Thrive
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-serif px-4" data-testid="text-capabilities-description">
-            Empowering the creative ecosystem through comprehensive marketplace solutions
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-serif px-4" data-testid="text-capabilities-description">
+            Whether you create, organize, or host, we have you covered.
           </p>
         </div>
 
-        {/* Capabilities Grid - Mobile First */}
-        <div className="grid gap-6 md:grid-cols-3 md:gap-8 max-w-6xl mx-auto">
+        {/* Capabilities Grid - Minimal Design */}
+        <div className="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto">
           {capabilities.map((capability, index) => {
             const Icon = capability.icon;
             return (
-              <Card 
+              <div 
                 key={capability.title}
-                className="group hover-elevate transition-all duration-300 border-card-border"
-                data-testid={`card-capability-${index}`}
+                className="text-center group"
+                data-testid={`section-capability-${index}`}
               >
-                <CardHeader className="text-center p-4 md:p-6">
-                  {/* Icon - Mobile Optimized */}
-                  <div className={`w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-xl ${getColorClasses(capability.color)} flex items-center justify-center transition-colors`}>
-                    <Icon className="w-6 h-6 md:w-8 md:h-8" />
-                  </div>
-                  
-                  <CardTitle className="text-xl md:text-2xl font-bold font-sans" data-testid={`text-capability-title-${index}`}>
-                    {capability.title}
-                  </CardTitle>
-                  
-                  <CardDescription className="text-sm md:text-base font-serif" data-testid={`text-capability-description-${index}`}>
-                    {capability.description}
-                  </CardDescription>
-                </CardHeader>
+                {/* Icon */}
+                <div className="w-16 h-16 mx-auto mb-6 bg-black rounded-full flex items-center justify-center">
+                  <Icon className="w-8 h-8 text-white" />
+                </div>
+                
+                {/* Title */}
+                <h3 className="text-xl md:text-2xl font-bold text-black mb-3 font-sans" data-testid={`text-capability-title-${index}`}>
+                  {capability.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-gray-600 mb-6 font-serif" data-testid={`text-capability-description-${index}`}>
+                  {capability.description}
+                </p>
 
-                <CardContent className="p-4 md:p-6">
-                  {/* Features List - Mobile Optimized */}
-                  <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                    {capability.features.map((feature, featureIndex) => (
-                      <li 
-                        key={feature} 
-                        className="flex items-center text-xs md:text-sm text-muted-foreground"
-                        data-testid={`text-feature-${index}-${featureIndex}`}
-                      >
-                        <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-primary rounded-full mr-2 md:mr-3 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA Button - Mobile Optimized */}
-                  <Button 
-                    variant="outline" 
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors text-sm md:text-base py-2 md:py-3"
-                    onClick={() => onGetStartedClick?.(capability.title)}
-                    data-testid={`button-get-started-${index}`}
-                  >
-                    Get Started
-                    <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </CardContent>
-              </Card>
+                {/* Features List - Clean bullets */}
+                <ul className="space-y-2 text-sm text-gray-500 font-serif">
+                  {capability.features.map((feature, featureIndex) => (
+                    <li 
+                      key={feature} 
+                      className="flex items-center justify-center gap-2"
+                      data-testid={`text-feature-${index}-${featureIndex}`}
+                    >
+                      <div className="w-1 h-1 bg-black rounded-full flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             );
           })}
         </div>

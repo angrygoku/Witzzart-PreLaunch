@@ -4,7 +4,6 @@ export default function NavigationExample() {
   return (
     <div className="h-screen bg-gray-100">
       <Navigation 
-        onWhatsAppClick={() => console.log('WhatsApp clicked')}
         onContactClick={() => console.log('Contact clicked')}
       />
       <div className="pt-20 p-8">

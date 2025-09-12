@@ -80,16 +80,20 @@ export default function ContactSection({ onFormSubmit, onWhatsAppClick }: Contac
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-purple-50">
+    <section id="contact" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header - Mobile First */}
+        {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 font-sans" data-testid="text-contact-headline">
-            Get in Touch
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 font-sans" data-testid="text-contact-headline">
+            Join the Waitlist
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-serif px-4" data-testid="text-contact-description">
-            Ready to join the creative revolution? Reach out to us and be part of India's 
-            premier government-backed creative marketplace.
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-serif px-4" data-testid="text-contact-description">
+            Be among the first to experience the platform built for India's creative community.
+          </p>
+          
+          {/* Subtle Government Support Note */}
+          <p className="text-sm text-gray-500 mt-4 font-serif" data-testid="text-government-support">
+            Supported by Rajasthan State Government
           </p>
         </div>
 

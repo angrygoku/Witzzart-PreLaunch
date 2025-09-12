@@ -1,7 +1,8 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
+import StoriesSection from "@/components/StoriesSection";
+import PlatformShowcaseSection from "@/components/PlatformShowcaseSection";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
-import TrustSection from "@/components/TrustSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
@@ -22,8 +23,8 @@ export default function LandingPage() {
     
     // Simulate email sending
     toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 24 hours via email.",
+      title: "Welcome to the waitlist!",
+      description: "We'll notify you as soon as we launch.",
     });
   };
 
@@ -33,35 +34,39 @@ export default function LandingPage() {
     
     toast({
       title: "Feature coming soon!",
-      description: `${capability} registration will be available at launch.`,
+      description: `${capability} will be available at launch.`,
     });
   };
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Navigation */}
       <Navigation 
-        onWhatsAppClick={handleWhatsAppClick}
         onContactClick={() => console.log('Contact navigation clicked')}
       />
 
       {/* Hero Section */}
       <HeroSection 
-        onWhatsAppClick={handleWhatsAppClick}
+        onJoinWaitlistClick={() => console.log('Join waitlist clicked')}
         onLearnMoreClick={() => console.log('Learn more clicked')}
       />
 
-      {/* Platform Capabilities */}
+      {/* Stories Section */}
+      <StoriesSection 
+        onViewMoreClick={() => console.log('View more stories clicked')}
+      />
+
+      {/* Platform Showcase */}
+      <PlatformShowcaseSection 
+        onLearnMoreClick={() => console.log('Platform learn more clicked')}
+      />
+
+      {/* Capabilities - Minimal */}
       <CapabilitiesSection 
         onGetStartedClick={handleGetStarted}
       />
 
-      {/* Government Trust Section */}
-      <TrustSection 
-        onLearnMoreClick={() => console.log('Trust learn more clicked')}
-      />
-
-      {/* Contact Section */}
+      {/* Contact Section with WhatsApp/Email */}
       <ContactSection 
         onFormSubmit={handleFormSubmit}
         onWhatsAppClick={handleWhatsAppClick}

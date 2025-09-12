@@ -3,7 +3,7 @@ import HeroSection from '../HeroSection';
 export default function HeroSectionExample() {
   return (
     <HeroSection 
-      onWhatsAppClick={() => console.log('WhatsApp clicked')}
+      onJoinWaitlistClick={() => console.log('Join waitlist clicked')}
       onLearnMoreClick={() => console.log('Learn More clicked')}
     />
   );
