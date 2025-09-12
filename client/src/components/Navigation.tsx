@@ -44,11 +44,11 @@ export default function Navigation({ onContactClick }: NavigationProps) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <button 
-              onClick={() => document.getElementById('stories')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('value')?.scrollIntoView({ behavior: 'smooth' })}
               className="text-black hover:text-gray-600 transition-colors font-medium font-serif"
-              data-testid="button-nav-stories"
+              data-testid="button-nav-about"
             >
-              Stories
+              About
             </button>
             
             <button 
@@ -84,13 +84,13 @@ export default function Navigation({ onContactClick }: NavigationProps) {
             <div className="flex flex-col space-y-4">
               <button 
                 onClick={() => {
-                  document.getElementById('stories')?.scrollIntoView({ behavior: 'smooth' });
+                  document.getElementById('value')?.scrollIntoView({ behavior: 'smooth' });
                   setIsMenuOpen(false);
                 }}
                 className="text-left px-4 py-2 text-black hover:text-gray-600 transition-colors font-medium font-serif"
-                data-testid="button-mobile-stories"
+                data-testid="button-mobile-about"
               >
-                Stories
+                About
               </button>
               
               <button 

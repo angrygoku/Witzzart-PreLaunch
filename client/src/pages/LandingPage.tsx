@@ -1,7 +1,6 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import StoriesSection from "@/components/StoriesSection";
-import PlatformShowcaseSection from "@/components/PlatformShowcaseSection";
+import ValuePropositionSection from "@/components/ValuePropositionSection";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -51,17 +50,12 @@ export default function LandingPage() {
         onLearnMoreClick={() => console.log('Learn more clicked')}
       />
 
-      {/* Stories Section */}
-      <StoriesSection 
-        onViewMoreClick={() => console.log('View more stories clicked')}
+      {/* Value Proposition */}
+      <ValuePropositionSection 
+        onLearnMoreClick={() => console.log('Value proposition learn more clicked')}
       />
 
-      {/* Platform Showcase */}
-      <PlatformShowcaseSection 
-        onLearnMoreClick={() => console.log('Platform learn more clicked')}
-      />
-
-      {/* Capabilities - Minimal */}
+      {/* Capabilities */}
       <CapabilitiesSection 
         onGetStartedClick={handleGetStarted}
       />

@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ArrowRight } from "lucide-react";
-import creatorHeadshots from "@assets/generated_images/Professional_creator_headshots_e49ca173.png";
 
 interface HeroSectionProps {
   onJoinWaitlistClick?: () => void;
@@ -15,19 +13,9 @@ export default function HeroSection({ onJoinWaitlistClick, onLearnMoreClick }: H
   };
 
   const handleLearnMore = () => {
-    document.getElementById('stories')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('capabilities')?.scrollIntoView({ behavior: 'smooth' });
     onLearnMoreClick?.();
   };
-
-  // todo: replace with real creator data when available
-  const creators = [
-    { name: "Priya", role: "Artist" },
-    { name: "Rahul", role: "Organizer" },
-    { name: "Anjali", role: "Venue Owner" },
-    { name: "Amit", role: "Photographer" },
-    { name: "Kavya", role: "Designer" },
-    { name: "Rohan", role: "Musician" }
-  ];
 
   return (
     <section className="min-h-screen bg-white flex items-center py-20">
@@ -44,23 +32,22 @@ export default function HeroSection({ onJoinWaitlistClick, onLearnMoreClick }: H
             The marketplace connecting India's creative community with endless possibilities.
           </p>
 
-          {/* Creator Faces Strip */}
-          <div className="mb-12" data-testid="section-creator-faces">
-            <p className="text-sm text-gray-500 mb-4 font-serif">Trusted by creators across India</p>
-            <div className="flex justify-center items-center gap-3 mb-4">
-              {creators.slice(0, 6).map((creator, index) => (
-                <div key={index} className="text-center">
-                  <Avatar className="w-12 h-12 md:w-14 md:h-14 border-2 border-gray-100">
-                    <AvatarFallback className="bg-gray-100 text-gray-600 text-xs font-medium">
-                      {creator.name.slice(0, 2)}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="mt-1">
-                    <p className="text-xs font-medium text-gray-700">{creator.name}</p>
-                    <p className="text-xs text-gray-500">{creator.role}</p>
-                  </div>
-                </div>
-              ))}
+          {/* Value Proposition */}
+          <div className="mb-12" data-testid="section-value-proposition">
+            <p className="text-sm text-gray-500 mb-6 font-serif">Building the future of creative collaboration in India</p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-black rounded-full" />
+                <span>Government Backed Platform</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-black rounded-full" />
+                <span>Rajasthan & National Support</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-black rounded-full" />
+                <span>Created by Creators, for Creators</span>
+              </div>
             </div>
           </div>
 
@@ -80,7 +67,7 @@ export default function HeroSection({ onJoinWaitlistClick, onLearnMoreClick }: H
               className="w-full sm:w-auto border-gray-300 text-black hover:bg-gray-50 px-8 py-4 text-lg"
               data-testid="button-learn-more"
             >
-              Explore Stories
+              Learn More
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
