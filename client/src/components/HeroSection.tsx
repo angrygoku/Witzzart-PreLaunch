@@ -1,7 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, ArrowRight } from "lucide-react";
-import heroImage from "@assets/generated_images/Rajasthan_creative_community_collage_b3c92678.png";
 
 interface HeroSectionProps {
   onWhatsAppClick?: () => void;
@@ -21,12 +20,14 @@ export default function HeroSection({ onWhatsAppClick, onLearnMoreClick }: HeroS
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Hero Background with Gradient Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-purple-700/80 to-orange-600/70" />
+      {/* Abstract Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-purple-600 to-orange-500">
+        {/* Abstract geometric shapes */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-48 md:h-48 bg-white/10 rounded-full blur-2xl" />
+          <div className="absolute bottom-1/3 right-1/4 w-24 h-24 md:w-36 md:h-36 bg-orange-300/20 rounded-full blur-xl" />
+          <div className="absolute top-1/2 right-1/3 w-16 h-16 md:w-24 md:h-24 bg-purple-300/15 rounded-full blur-lg" />
+        </div>
       </div>
 
       {/* Floating Creative Elements */}
@@ -43,55 +44,54 @@ export default function HeroSection({ onWhatsAppClick, onLearnMoreClick }: HeroS
           {/* Launching Soon Badge */}
           <Badge 
             variant="secondary" 
-            className="mb-6 bg-white/20 text-white border-white/30 hover:bg-white/30 px-6 py-2 text-lg font-medium backdrop-blur-sm"
+            className="mb-4 md:mb-6 bg-white/20 text-white border-white/30 hover:bg-white/30 px-4 py-2 md:px-6 md:py-2 text-sm md:text-lg font-medium backdrop-blur-sm"
             data-testid="badge-launching-soon"
           >
             🎨 Launching Soon
           </Badge>
 
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight font-sans" data-testid="text-hero-headline">
+          {/* Main Headline - Mobile First */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight font-sans" data-testid="text-hero-headline">
             Empowering India's 
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-pink-200">
               Creative Economy
             </span>
           </h1>
 
-          {/* Mission Statement */}
-          <p className="text-xl md:text-2xl mb-8 font-serif text-gray-100 max-w-3xl mx-auto leading-relaxed" data-testid="text-mission-statement">
+          {/* Mission Statement - Mobile Optimized */}
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 font-serif text-gray-100 max-w-3xl mx-auto leading-relaxed px-4" data-testid="text-mission-statement">
             A government-backed marketplace connecting artists, venues, and event organizers. 
             Supporting local creators and homegrown businesses across Rajasthan and beyond.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {/* CTA Buttons - Mobile Stack */}
+          <div className="flex flex-col gap-3 sm:gap-4 justify-center items-center px-4">
             <Button 
               onClick={handleWhatsApp}
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg font-medium"
+              className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-6 py-4 md:px-8 md:py-6 text-base md:text-lg font-medium"
               data-testid="button-whatsapp-contact"
             >
-              <MessageCircle className="mr-2 h-5 w-5" />
+              <MessageCircle className="mr-2 h-4 w-4 md:h-5 md:w-5" />
               Connect on WhatsApp
             </Button>
             
             <Button 
               variant="outline"
               onClick={handleLearnMore}
-              className="bg-white/10 border-white/30 text-white hover:bg-white/20 px-8 py-6 text-lg backdrop-blur-sm"
+              className="w-full sm:w-auto bg-white/10 border-white/30 text-white hover:bg-white/20 px-6 py-4 md:px-8 md:py-6 text-base md:text-lg backdrop-blur-sm"
               data-testid="button-learn-more"
             >
               Learn More
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
             </Button>
           </div>
 
-          {/* Government Backing Indicator */}
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-200">
+          {/* Government Backing Indicator - Mobile Optimized */}
+          <div className="mt-8 md:mt-12 flex flex-col items-center justify-center gap-3 text-xs sm:text-sm text-gray-200 px-4">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               <span>Backed by Rajasthan State Government</span>
             </div>
-            <div className="hidden sm:block w-1 h-4 bg-white/30" />
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               <span>Central Government Funding</span>

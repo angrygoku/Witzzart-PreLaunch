@@ -38,7 +38,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Navigation */}
       <Navigation 
         onWhatsAppClick={handleWhatsAppClick}

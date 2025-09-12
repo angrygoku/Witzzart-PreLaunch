@@ -80,20 +80,20 @@ export default function ContactSection({ onFormSubmit, onWhatsAppClick }: Contac
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-gray-50 to-purple-50">
+    <section id="contact" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-purple-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-sans" data-testid="text-contact-headline">
+        {/* Section Header - Mobile First */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 font-sans" data-testid="text-contact-headline">
             Get in Touch
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-serif" data-testid="text-contact-description">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-serif px-4" data-testid="text-contact-description">
             Ready to join the creative revolution? Reach out to us and be part of India's 
             premier government-backed creative marketplace.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
           <Card className="hover-elevate transition-all duration-300" data-testid="card-contact-form">
             <CardHeader>
