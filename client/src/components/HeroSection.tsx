@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import logoUrl from "@assets/logo.png";
 
 interface HeroSectionProps {
   onJoinWaitlistClick?: () => void;

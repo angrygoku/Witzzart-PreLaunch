@@ -71,7 +71,9 @@ export default function ContactSection({ onFormSubmit, onWhatsAppClick }: Contac
   };
 
   const handleWhatsApp = () => {
-    window.open('https://wa.me/919675624255', '_blank');
+    const message = encodeURIComponent('Hi! I am interested in joining the Witzzart waitlist and would like to know more about the platform.');
+    const whatsappUrl = `https://wa.me/919675624255?text=${message}`;
+    window.open(whatsappUrl, '_blank');
     onWhatsAppClick?.();
   };
 
