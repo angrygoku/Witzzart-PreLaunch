@@ -1,4 +1,6 @@
 import { MessageCircle, Mail, MapPin, Heart } from "lucide-react";
+import { SiInstagram, SiFacebook, SiThreads, SiLinkedin } from "react-icons/si";
+import logoUrl from "@assets/logo.png";
 
 interface FooterProps {
   onWhatsAppClick?: () => void;
@@ -24,15 +26,55 @@ export default function Footer({ onWhatsAppClick }: FooterProps) {
           <div className="md:col-span-2">
             <button 
               onClick={handleScrollToTop}
-              className="text-3xl font-bold text-white hover:text-pink-300 transition-colors mb-4 font-sans"
+              className="mb-4"
               data-testid="button-footer-logo"
             >
-              Witzzart
+              <img src={logoUrl} alt="Witzzart" className="h-12 w-auto hover:opacity-80 transition-opacity" />
             </button>
             <p className="text-gray-300 mb-6 font-serif max-w-md" data-testid="text-footer-description">
               Empowering India's creative economy through a government-backed marketplace. 
               Connecting artists, venues, and event organizers across the nation.
             </p>
+            
+            {/* Social Media Links */}
+            <div className="flex gap-4 mb-6">
+              <a 
+                href="https://www.instagram.com/witzzart_/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-pink-400 transition-colors"
+                data-testid="link-footer-instagram"
+              >
+                <SiInstagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.facebook.com/TheArtWizzard/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+                data-testid="link-footer-facebook"
+              >
+                <SiFacebook className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.threads.com/@witzzart_" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                data-testid="link-footer-threads"
+              >
+                <SiThreads className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://in.linkedin.com/company/wittzart" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-500 transition-colors"
+                data-testid="link-footer-linkedin"
+              >
+                <SiLinkedin className="w-5 h-5" />
+              </a>
+            </div>
             
             {/* Government Backing */}
             <div className="flex flex-col sm:flex-row gap-4 text-sm text-gray-400">
@@ -120,7 +162,9 @@ export default function Footer({ onWhatsAppClick }: FooterProps) {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-sm text-gray-400 font-serif">
-              <span>© {currentYear} Witzzart. Made with</span>
+              <span>© {currentYear}</span>
+              <img src={logoUrl} alt="Witzzart" className="h-4 w-auto inline" />
+              <span>Made with</span>
               <Heart className="w-4 h-4 text-red-400" />
               <span>for India's Creative Community</span>
             </div>
