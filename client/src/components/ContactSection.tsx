@@ -82,11 +82,11 @@ export default function ContactSection({ onFormSubmit, onWhatsAppClick }: Contac
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white">
+    <section id="contact" className="py-16 md:py-24 bg-white dark:bg-gray-900 transition-colors">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 font-sans" data-testid="text-contact-headline">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white mb-4 font-sans" data-testid="text-contact-headline">
             Join the Waitlist
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-serif px-4" data-testid="text-contact-description">

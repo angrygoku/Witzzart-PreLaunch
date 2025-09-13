@@ -19,11 +19,11 @@ export default function ValuePropositionSection({ onLearnMoreClick }: ValuePropo
   ];
 
   return (
-    <section id="value" className="py-20 bg-gray-50">
+    <section id="value" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 font-sans" data-testid="text-value-headline">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white mb-4 font-sans" data-testid="text-value-headline">
             Built for India's Creative Future
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-serif" data-testid="text-value-description">
@@ -45,12 +45,12 @@ export default function ValuePropositionSection({ onLearnMoreClick }: ValuePropo
               </div>
               
               {/* Title */}
-              <h3 className="text-xl md:text-2xl font-bold text-black mb-3 font-sans" data-testid={`text-benefit-title-${index}`}>
+              <h3 className="text-xl md:text-2xl font-bold text-black dark:text-white mb-3 font-sans" data-testid={`text-benefit-title-${index}`}>
                 {benefit.title}
               </h3>
               
               {/* Description */}
-              <p className="text-gray-600 font-serif leading-relaxed" data-testid={`text-benefit-description-${index}`}>
+              <p className="text-gray-600 dark:text-gray-300 font-serif leading-relaxed" data-testid={`text-benefit-description-${index}`}>
                 {benefit.description}
               </p>
             </div>
