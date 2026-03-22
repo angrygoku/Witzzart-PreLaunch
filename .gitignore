@@ -6,3 +6,9 @@ vite.config.ts.*
 *.tar.gz
 # Local Netlify folder
 .netlify
+.local
+.deck-preview
+.codex-dev.log
+.codex-dev.err
+.config
+attached_assets

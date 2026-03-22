@@ -44,6 +44,27 @@ Your WitzzartLaunch application has been successfully deployed to Netlify and is
 - ✅ **Security**: CSP and security headers configured
 - ✅ **Mobile Responsive**: Works perfectly on all devices
 
+## Environment Variables
+
+Set these in Netlify before relying on live notifications:
+
+```bash
+RESEND_API_KEY=re_xxxxxxxxx
+RESEND_FROM_EMAIL="Witzzart <waitlist@yourdomain.com>"
+WAITLIST_NOTIFY_EMAIL_TO=govinddixit@witzzart.com
+
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
+WAITLIST_NOTIFY_WHATSAPP_TO=whatsapp:+919675624255
+```
+
+Notes:
+- `RESEND_FROM_EMAIL` must be a sender/domain verified in Resend.
+- `TWILIO_WHATSAPP_FROM` must be a Twilio-approved WhatsApp sender.
+- WhatsApp delivery is subject to Twilio/WhatsApp sender approval and WhatsApp session rules.
+- Signups are still stored in memory in this codebase. Add a database if you need persistence across restarts and deploys.
+
 ## 🔧 Local Development
 
 ```bash

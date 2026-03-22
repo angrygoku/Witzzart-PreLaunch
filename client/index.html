@@ -3,42 +3,1332 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    
-    <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="6Sr5snpLtXppsB72hmogb35xzYo2BEN4xyMUAJx2kyE" />
-    
-    <!-- SEO Meta Tags -->
-    <title>Witzzart - Creative Marketplace Launching Soon | Government Backed Platform for Artists, Venues & Events</title>
-    <meta name="description" content="Witzzart is launching soon - a government-backed SaaS marketplace connecting artists, venues, and event organizers. Join the creative economy revolution with Rajasthan State and Central Government support." />
-    <meta name="keywords" content="creative marketplace, artists, venues, events, government backed, India, Rajasthan, SaaS platform, creative economy" />
+    <title>Witzzart | Your &#2325;&#2354;&#2366; deserves more than DMs.</title>
+    <meta
+      name="description"
+      content="Witzzart is building India's first creative marketplace for artwork, experiences, and talent. Join the pre-launch waitlist."
+    />
+    <meta
+      name="keywords"
+      content="Witzzart, India art marketplace, creative marketplace, artwork, workshops, art walks, creative talent, waitlist"
+    />
     <meta name="author" content="Witzzart" />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#090909" />
     <link rel="canonical" href="https://witzzart.com" />
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Witzzart - Creative Marketplace Launching Soon" />
-    <meta property="og:description" content="Government-backed SaaS marketplace for artists, venues, and event organizers. Join the creative economy revolution." />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta
+      property="og:title"
+      content="Witzzart | Your &#2325;&#2354;&#2366; deserves more than DMs."
+    />
+    <meta
+      property="og:description"
+      content="India's first creative marketplace for artwork, experiences, and talent. Join the pre-launch waitlist."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://witzzart.com" />
     <meta property="og:image" content="https://witzzart.com/logo.png" />
     <meta property="og:site_name" content="Witzzart" />
-    
-    <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Witzzart - Creative Marketplace Launching Soon" />
-    <meta name="twitter:description" content="Government-backed SaaS marketplace for artists, venues, and event organizers. Join the creative economy revolution." />
+    <meta
+      name="twitter:title"
+      content="Witzzart | Your &#2325;&#2354;&#2366; deserves more than DMs."
+    />
+    <meta
+      name="twitter:description"
+      content="India's first creative marketplace for artwork, experiences, and talent. Join the pre-launch waitlist."
+    />
     <meta name="twitter:image" content="https://witzzart.com/logo.png" />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,700;6..96,900&family=Manrope:wght@400;500;600;700;800&family=Noto+Serif+Devanagari:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #090909;
+        --fg: #f4efe7;
+        --muted: rgba(244, 239, 231, 0.7);
+        --line: rgba(244, 239, 231, 0.16);
+        --panel: #f4efe7;
+        --panel-text: #090909;
+        --accent: #c71f16;
+        --shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+        --radius: 1.7rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--bg);
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: "Manrope", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .page {
+        position: relative;
+        isolation: isolate;
+        min-height: 100vh;
+      }
+
+      .texture,
+      .gestures {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .texture {
+        z-index: -3;
+        opacity: 0.92;
+      }
+
+      .gestures {
+        z-index: -2;
+        overflow: visible;
+      }
+
+      .gestures path {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 900;
+        stroke-dashoffset: 900;
+        animation: reveal-stroke 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+          drift 16s ease-in-out 3.2s infinite;
+      }
+
+      .gestures .white-stroke {
+        stroke: rgba(244, 239, 231, 0.18);
+        stroke-width: 1.4;
+      }
+
+      .gestures .red-stroke {
+        stroke: rgba(199, 31, 22, 0.7);
+        stroke-width: 2;
+      }
+
+      .stage {
+        width: min(100% - 2rem, 1240px);
+        margin: 0 auto;
+        padding: 1.2rem 0 1.5rem;
+      }
+
+      .masthead,
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .masthead {
+        padding: 0.35rem 0 2rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 0.55rem;
+      }
+
+      .mark {
+        display: block;
+        width: min(17rem, 42vw);
+      }
+
+      .mark img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .brand-line {
+        width: min(15rem, 38vw);
+        height: 1px;
+        background: rgba(199, 31, 22, 0.95);
+      }
+
+      .stamp {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.76rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+        gap: clamp(2rem, 4vw, 4.5rem);
+        align-items: end;
+        min-height: calc(100vh - 8.8rem);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        filter: blur(12px);
+        animation: settle 1.05s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        animation-delay: var(--delay, 0s);
+      }
+
+      .eyebrow {
+        margin: 0 0 1rem;
+        font-size: 0.84rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 10.5ch;
+        font-family: "Bodoni Moda", serif;
+        font-size: clamp(3.5rem, 10vw, 7.9rem);
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+        font-weight: 900;
+      }
+
+      .devanagari {
+        font-family: "Noto Serif Devanagari", serif;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .lede {
+        margin: 1.65rem 0 0;
+        max-width: 34rem;
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        line-height: 1.65;
+        color: var(--muted);
+      }
+
+      .engines {
+        display: grid;
+        gap: 0.9rem;
+        margin-top: 1.65rem;
+        padding-top: 1.35rem;
+        border-top: 1px solid var(--line);
+        max-width: 35rem;
+      }
+
+      .engine {
+        display: grid;
+        grid-template-columns: minmax(0, 8.25rem) minmax(0, 1fr);
+        gap: 1rem;
+        align-items: baseline;
+      }
+
+      .engine-name {
+        font-size: 0.96rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .engine-copy {
+        font-size: 0.98rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+
+      .panel {
+        position: relative;
+        overflow: hidden;
+        background: rgba(244, 239, 231, 0.97);
+        color: var(--panel-text);
+        border-radius: var(--radius);
+        padding: clamp(1.35rem, 3vw, 2.3rem);
+        box-shadow: var(--shadow);
+      }
+
+      .panel::before,
+      .panel::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .panel::before {
+        inset: 1rem;
+        border: 1px solid rgba(9, 9, 9, 0.12);
+        border-radius: calc(var(--radius) - 0.8rem);
+      }
+
+      .panel::after {
+        inset: auto 1rem 1rem auto;
+        width: 5.2rem;
+        height: 5.2rem;
+        border-right: 1px solid rgba(9, 9, 9, 0.12);
+        border-bottom: 1px solid rgba(9, 9, 9, 0.12);
+        border-bottom-right-radius: calc(var(--radius) - 0.8rem);
+        opacity: 0.55;
+      }
+
+      .panel-label {
+        margin: 0;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .waitlist {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 1.15rem 0 0;
+        font-size: 0.98rem;
+        font-weight: 700;
+      }
+
+      .waitlist-dot {
+        width: 0.62rem;
+        height: 0.62rem;
+        flex: none;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 0 rgba(199, 31, 22, 0.45);
+        animation: pulse 3.8s ease-in-out infinite;
+      }
+
+      .panel-title {
+        margin: 1.25rem 0 0;
+        max-width: 10ch;
+        font-family: "Bodoni Moda", serif;
+        font-size: clamp(2.25rem, 5vw, 3.7rem);
+        line-height: 0.96;
+        letter-spacing: -0.04em;
+      }
+
+      .panel-copy {
+        margin: 1rem 0 0;
+        max-width: 26rem;
+        color: rgba(9, 9, 9, 0.72);
+        font-size: 0.99rem;
+        line-height: 1.65;
+      }
+
+      .proof-note {
+        margin: 1rem 0 0;
+        color: rgba(9, 9, 9, 0.62);
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .chapters {
+        margin-top: 4.5rem;
+      }
+
+      .chapter {
+        position: relative;
+        min-height: 82vh;
+        padding: 5.5rem 0 5rem;
+        border-top: 1px solid var(--line);
+        overflow: hidden;
+      }
+
+      .chapter-mark {
+        display: none;
+      }
+
+      .chapter-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: clamp(1.6rem, 4vw, 4rem);
+        align-items: start;
+      }
+
+      .chapter-kicker {
+        margin: 0 0 1rem;
+        color: rgba(244, 239, 231, 0.6);
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .chapter-title {
+        margin: 0;
+        max-width: 9ch;
+        font-family: "Bodoni Moda", serif;
+        font-size: clamp(2.5rem, 6vw, 4.8rem);
+        line-height: 0.96;
+        letter-spacing: -0.04em;
+      }
+
+      .chapter-intro {
+        margin: 1.2rem 0 0;
+        max-width: 26rem;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.75;
+      }
+
+      .signal-stack {
+        display: grid;
+        gap: 0;
+        border-top: 1px solid rgba(244, 239, 231, 0.12);
+      }
+
+      .signal-line {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 1.35rem 0 1.5rem;
+        border-bottom: 1px solid rgba(244, 239, 231, 0.12);
+      }
+
+      .signal-no {
+        display: none;
+      }
+
+      .signal-content h3 {
+        margin: 0;
+        max-width: 12ch;
+        font-family: "Bodoni Moda", serif;
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
+        line-height: 0.94;
+        letter-spacing: -0.05em;
+      }
+
+      .signal-content p {
+        margin: 0.65rem 0 0;
+        max-width: 28rem;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.7;
+      }
+
+      .verb-board {
+        border-top: 1px solid rgba(244, 239, 231, 0.12);
+      }
+
+      .verb-row {
+        display: grid;
+        grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+        gap: 1.35rem;
+        align-items: start;
+        padding: 1.3rem 0 1.45rem;
+        border-bottom: 1px solid rgba(244, 239, 231, 0.12);
+      }
+
+      .verb-word {
+        margin: 0;
+        color: var(--fg);
+        font-family: "Bodoni Moda", serif;
+        font-size: clamp(2rem, 4.4vw, 3.8rem);
+        line-height: 0.88;
+        letter-spacing: -0.06em;
+      }
+
+      .verb-copy {
+        margin: 0;
+        padding-top: 0.2rem;
+        max-width: 32rem;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+
+      .clarity-board {
+        position: relative;
+        overflow: hidden;
+        padding: 1.2rem;
+        border-radius: 2rem;
+        background: rgba(244, 239, 231, 0.97);
+        color: #090909;
+        box-shadow: var(--shadow);
+      }
+
+      .clarity-board::before {
+        content: "";
+        position: absolute;
+        inset: 1rem;
+        border: 1px solid rgba(9, 9, 9, 0.12);
+        border-radius: 1.4rem;
+        pointer-events: none;
+      }
+
+      .clarity-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .clarity-panel {
+        position: relative;
+        min-height: 18rem;
+        padding: 1.35rem 1.25rem 1.4rem;
+        border-radius: 1.45rem;
+        border: 1px solid rgba(9, 9, 9, 0.12);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(244, 239, 231, 0.98));
+      }
+
+      .clarity-panel::before {
+        content: "";
+        position: absolute;
+        left: 1.25rem;
+        top: 1.25rem;
+        width: 2.6rem;
+        height: 2px;
+        background: rgba(199, 31, 22, 0.95);
+      }
+
+      .clarity-label {
+        margin: 1rem 0 0;
+        color: rgba(199, 31, 22, 0.95);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .clarity-title {
+        margin: 0.45rem 0 0;
+        max-width: 10ch;
+        font-family: "Bodoni Moda", serif;
+        font-size: clamp(2rem, 3.6vw, 3rem);
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+      }
+
+      .clarity-text {
+        margin: 0.85rem 0 0;
+        max-width: 24rem;
+        color: rgba(9, 9, 9, 0.76);
+        font-size: 0.97rem;
+        line-height: 1.68;
+      }
+
+      .clarity-list {
+        display: grid;
+        gap: 0.7rem;
+        margin: 1.1rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .clarity-list li {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8rem) minmax(0, 1fr);
+        gap: 0.7rem;
+        align-items: start;
+      }
+
+      .clarity-list span {
+        display: inline-flex;
+        width: 0.45rem;
+        height: 0.45rem;
+        margin-top: 0.45rem;
+        border-radius: 999px;
+        background: rgba(199, 31, 22, 0.95);
+      }
+
+      .clarity-list p {
+        margin: 0;
+        color: #090909;
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      .clarity-foot {
+        position: relative;
+        margin-top: 1rem;
+        padding: 1.15rem 0 0;
+        border-top: 1px solid rgba(9, 9, 9, 0.12);
+        color: rgba(9, 9, 9, 0.72);
+        font-size: 0.98rem;
+        line-height: 1.65;
+      }
+
+      .raw-band {
+        position: relative;
+        margin-top: 1.6rem;
+        padding: 1.2rem 0 0;
+      }
+
+      .raw-band::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: min(8rem, 24vw);
+        height: 2px;
+        background: rgba(199, 31, 22, 0.95);
+      }
+
+      .raw-band p {
+        margin: 0;
+        max-width: 24rem;
+        font-family: "Bodoni Moda", serif;
+        font-size: clamp(1.5rem, 3vw, 2.3rem);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+
+      .closing {
+        min-height: 70vh;
+        display: grid;
+        place-items: center;
+        padding: 4rem 0 2rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .closing-card {
+        width: min(100%, 46rem);
+        padding: 2rem 1.7rem;
+        border-radius: 1.8rem;
+        border: 1px solid rgba(244, 239, 231, 0.12);
+        background: rgba(244, 239, 231, 0.04);
+        text-align: center;
+      }
+
+      .closing-card h2 {
+        margin: 0;
+        font-family: "Bodoni Moda", serif;
+        font-size: clamp(2.1rem, 5vw, 3.6rem);
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .closing-card p {
+        margin: 1rem auto 0;
+        max-width: 30rem;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .closing-card a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1.35rem;
+        min-height: 3.3rem;
+        padding: 0.85rem 1.35rem;
+        border-radius: 999px;
+        border: 1px solid rgba(244, 239, 231, 0.18);
+        color: var(--fg);
+        font-size: 0.88rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .waitlist-form {
+        display: grid;
+        gap: 0.9rem;
+        margin-top: 1.65rem;
+      }
+
+      .field {
+        width: 100%;
+        border: 1px solid rgba(9, 9, 9, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.68);
+        color: var(--panel-text);
+        padding: 1rem 1.25rem;
+        min-height: 3.6rem;
+        outline: none;
+        transition: border-color 180ms ease, box-shadow 180ms ease,
+          transform 180ms ease;
+      }
+
+      .field::placeholder {
+        color: rgba(9, 9, 9, 0.48);
+      }
+
+      .field:focus {
+        border-color: rgba(9, 9, 9, 0.42);
+        box-shadow: 0 0 0 4px rgba(9, 9, 9, 0.06);
+        transform: translateY(-1px);
+      }
+
+      .submit {
+        border: 0;
+        border-radius: 999px;
+        min-height: 3.6rem;
+        padding: 0.95rem 1.35rem;
+        background: var(--accent);
+        color: var(--fg);
+        font-size: 0.98rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: transform 240ms ease, filter 240ms ease, opacity 240ms ease;
+      }
+
+      .submit:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+      }
+
+      .submit:active {
+        transform: translateY(0);
+      }
+
+      .submit:disabled {
+        cursor: wait;
+        opacity: 0.78;
+        transform: none;
+      }
+
+      .note,
+      .status {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+
+      .note {
+        color: rgba(9, 9, 9, 0.58);
+      }
+
+      .status {
+        min-height: 1.6em;
+        color: rgba(9, 9, 9, 0.82);
+      }
+
+      .status[data-state="error"] {
+        color: var(--accent);
+      }
+
+      .footer {
+        padding: 1.5rem 0 0.2rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      @keyframes settle {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+          filter: blur(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      @keyframes reveal-stroke {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0);
+          opacity: 0.82;
+        }
+        50% {
+          transform: translate3d(0, -10px, 0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(199, 31, 22, 0.44);
+        }
+        50% {
+          box-shadow: 0 0 0 10px rgba(199, 31, 22, 0);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr;
+          align-items: start;
+          min-height: auto;
+        }
+
+        .panel {
+          order: -1;
+        }
+
+        .chapter-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .chapter {
+          min-height: auto;
+        }
+
+        .chapter-mark {
+          top: 0.35em;
+          right: 0;
+          font-size: clamp(4rem, 18vw, 8rem);
+        }
+
+        .signal-line,
+        .verb-row,
+        .clarity-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .stage {
+          width: min(100% - 1.35rem, 1240px);
+          padding-top: 1rem;
+        }
+
+        .masthead,
+        .footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .mark,
+        .brand-line {
+          width: min(15rem, 72vw);
+        }
+
+        h1,
+        .panel-title {
+          max-width: none;
+        }
+
+        .engine {
+          grid-template-columns: 1fr;
+          gap: 0.25rem;
+        }
+
+        .chapters {
+          margin-top: 3rem;
+        }
+
+        .chapter {
+          padding: 3rem 0;
+        }
+
+        .footer {
+          gap: 0.55rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+    <div class="page">
+      <svg
+        class="texture"
+        viewBox="0 0 1440 1024"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <defs>
+          <pattern id="threads" width="120" height="120" patternUnits="userSpaceOnUse">
+            <path
+              d="M0 28H120M0 92H120M24 0V120M88 0V120"
+              stroke="rgba(244,239,231,0.06)"
+              stroke-width="0.8"
+            />
+            <path
+              d="M16 16L32 30M72 54L86 69M96 12L114 28M10 90L28 106"
+              stroke="rgba(244,239,231,0.09)"
+              stroke-width="0.65"
+            />
+          </pattern>
+          <filter id="paper-noise">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.82"
+              numOctaves="2"
+              stitchTiles="stitch"
+            >
+              <animate
+                attributeName="baseFrequency"
+                dur="18s"
+                values="0.82;0.76;0.82"
+                repeatCount="indefinite"
+              />
+            </feTurbulence>
+            <feColorMatrix type="saturate" values="0" />
+            <feComponentTransfer>
+              <feFuncA type="table" tableValues="0 0 0.22" />
+            </feComponentTransfer>
+          </filter>
+        </defs>
+        <rect width="100%" height="100%" fill="#090909" />
+        <rect width="100%" height="100%" fill="url(#threads)" opacity="0.7" />
+        <rect width="100%" height="100%" filter="url(#paper-noise)" opacity="0.45" />
+      </svg>
+
+      <svg
+        class="gestures"
+        viewBox="0 0 1440 1024"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          class="white-stroke"
+          d="M119 239C249 190 427 174 569 209C666 232 731 266 790 316C862 378 901 474 1019 501C1103 521 1178 484 1318 378"
+        />
+        <path
+          class="white-stroke"
+          d="M121 857C252 816 407 829 516 876C612 917 691 972 818 960C909 952 985 900 1046 834C1105 770 1142 688 1246 662"
+          style="animation-delay: 0.55s, 3.75s"
+        />
+        <path
+          class="red-stroke"
+          d="M846 129C914 138 995 166 1047 215C1097 262 1126 328 1148 397"
+          style="animation-delay: 1.05s, 4.25s"
+        />
+      </svg>
+
+      <div class="stage">
+        <header class="masthead">
+          <div class="brand">
+            <a class="mark" href="/" aria-label="Witzzart home">
+              <img src="/logo.png" alt="Witzzart" />
+            </a>
+            <div class="brand-line" aria-hidden="true"></div>
+          </div>
+          <p class="stamp">Pre-launch</p>
+        </header>
+
+        <main class="hero">
+          <section class="copy reveal" style="--delay: 0.08s">
+            <p class="eyebrow">India's first creative marketplace</p>
+            <h1>
+              Your <span class="devanagari" lang="hi">&#2325;&#2354;&#2366;</span>
+              deserves more than DMs.
+            </h1>
+            <p class="lede">
+              Witzzart is a marketplace where artists can sell work, put up
+              experiences, and get hired. It is also where people can discover,
+              book, buy, and commission without doing all of it through DMs.
+            </p>
+
+            <div class="engines" aria-label="Witzzart marketplace engines">
+              <div class="engine">
+                <div class="engine-name">Artwork</div>
+                <div class="engine-copy">
+                  Original work, listed with the seriousness it deserves.
+                </div>
+              </div>
+              <div class="engine">
+                <div class="engine-name">Experiences</div>
+                <div class="engine-copy">
+                  Workshops, art walks, and weekends worth stepping out for.
+                </div>
+              </div>
+              <div class="engine">
+                <div class="engine-name">Talent</div>
+                <div class="engine-copy">
+                  Creative people hired for the work, not lowballed in DMs.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <aside class="panel reveal" style="--delay: 0.28s">
+            <p class="panel-label">Waitlist</p>
+            <p class="waitlist">
+              <span class="waitlist-dot" aria-hidden="true"></span>
+              <span><span id="waitlist-count">1,284</span> already in</span>
+            </p>
+            <h2 class="panel-title">Be there before the doors open.</h2>
+            <p class="panel-copy">
+              Leave your email. We will write when early access opens.
+            </p>
+
+            <form class="waitlist-form" id="waitlist-form" novalidate>
+              <label class="sr-only" for="email">Email address</label>
+              <input
+                class="field"
+                id="email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                placeholder="you@studio.com"
+                aria-describedby="form-note form-status"
+                required
+              />
+              <button class="submit" type="submit" id="submit-button">
+                Join the waitlist
+              </button>
+              <p class="note" id="form-note">
+                No spam. Just the launch.
+              </p>
+              <p class="status" id="form-status" aria-live="polite"></p>
+            </form>
+            <p class="proof-note">DPIIT recognised</p>
+          </aside>
+        </main>
+
+        <div class="chapters">
+          <section class="chapter reveal" style="--delay: 0.18s" aria-labelledby="creators-title">
+            <div class="chapter-mark" aria-hidden="true">01</div>
+            <div class="chapter-inner">
+              <div>
+                <p class="chapter-kicker">For Creators</p>
+                <h2 class="chapter-title" id="creators-title">If you make things, teach things, or get hired for things.</h2>
+                <p class="chapter-intro">
+                  Witzzart is for artists and creative professionals who are
+                  tired of running serious work through casual chats.
+                </p>
+                <div class="raw-band">
+                  <p>Less chasing. More actual work.</p>
+                </div>
+              </div>
+              <div class="signal-stack">
+                <article class="signal-line">
+                  <div class="signal-no">01</div>
+                  <div class="signal-content">
+                    <h3>Sell original work without repeating yourself all day.</h3>
+                    <p>
+                      The work, the details, and the enquiry should sit in one
+                      place instead of being rebuilt in every conversation.
+                    </p>
+                  </div>
+                </article>
+                <article class="signal-line">
+                  <div class="signal-no">02</div>
+                  <div class="signal-content">
+                    <h3>Put workshops and experiences up once.</h3>
+                    <p>
+                      Dates, seats, pricing, and confirmations should not live
+                      across stories, screenshots, and follow-up messages.
+                    </p>
+                  </div>
+                </article>
+                <article class="signal-line">
+                  <div class="signal-no">03</div>
+                  <div class="signal-content">
+                    <h3>Get better briefs before the negotiation starts.</h3>
+                    <p>
+                      Creative work gets easier when fit, scope, and budget are
+                      clearer from the first message.
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="chapter reveal" style="--delay: 0.22s" aria-labelledby="enthusiasts-title">
+            <div class="chapter-mark" aria-hidden="true">02</div>
+            <div class="chapter-inner">
+              <div>
+                <p class="chapter-kicker">For Enthusiasts</p>
+                <h2 class="chapter-title" id="enthusiasts-title">If you are trying to find something worth your time.</h2>
+                <p class="chapter-intro">
+                  This is also for people trying to discover good work, book
+                  something interesting, or reach the right artist without doing
+                  a scavenger hunt through social media.
+                </p>
+              </div>
+              <div class="verb-board">
+                <div class="verb-row">
+                  <h3 class="verb-word">Find</h3>
+                  <p class="verb-copy">
+                    See workshops, art walks, and artists without depending on
+                    timing, luck, or one story you almost missed.
+                  </p>
+                </div>
+                <div class="verb-row">
+                  <h3 class="verb-word">Book</h3>
+                  <p class="verb-copy">
+                    Understand what it is, what it costs, and how to join before
+                    you open a chat window.
+                  </p>
+                </div>
+                <div class="verb-row">
+                  <h3 class="verb-word">Buy</h3>
+                  <p class="verb-copy">
+                    Find original work from a calmer starting point than
+                    “available?” and “price?”
+                  </p>
+                </div>
+                <div class="verb-row">
+                  <h3 class="verb-word">Hire</h3>
+                  <p class="verb-copy">
+                    Reach creative talent with enough clarity for the
+                    conversation to start properly.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="chapter reveal" style="--delay: 0.26s" aria-labelledby="flow-title">
+            <div class="chapter-mark" aria-hidden="true">03</div>
+            <div class="chapter-inner">
+              <div>
+                <p class="chapter-kicker">Use Cases</p>
+                <h2 class="chapter-title" id="flow-title">What is Witzzart, exactly?</h2>
+                <p class="chapter-intro">
+                  One place for creative work to be discovered, booked, bought,
+                  and hired properly.
+                </p>
+              </div>
+              <div class="clarity-board">
+                <div class="clarity-grid">
+                  <article class="clarity-panel">
+                    <p class="clarity-label">For creators</p>
+                    <h3 class="clarity-title">A proper place to run creative work.</h3>
+                    <p class="clarity-text">
+                      If you are an artist, host, or creative professional,
+                      Witzzart gives your work a home that is more serious than a
+                      feed and more useful than a chat thread.
+                    </p>
+                    <ul class="clarity-list">
+                      <li>
+                        <span aria-hidden="true"></span>
+                        <p>List original artwork so people can actually discover it and enquire properly.</p>
+                      </li>
+                      <li>
+                        <span aria-hidden="true"></span>
+                        <p>Put up workshops, sessions, and experiences with details people can book from.</p>
+                      </li>
+                      <li>
+                        <span aria-hidden="true"></span>
+                        <p>Show your creative practice clearly enough for the right clients to reach you.</p>
+                      </li>
+                    </ul>
+                  </article>
+                  <article class="clarity-panel">
+                    <p class="clarity-label">For buyers, attendees, and clients</p>
+                    <h3 class="clarity-title">A better way into the creative world.</h3>
+                    <p class="clarity-text">
+                      If you are here to find something to buy, attend, or hire,
+                      Witzzart makes that process feel clear before the back and
+                      forth begins.
+                    </p>
+                    <ul class="clarity-list">
+                      <li>
+                        <span aria-hidden="true"></span>
+                        <p>Discover original work and understand the basics before you message the artist.</p>
+                      </li>
+                      <li>
+                        <span aria-hidden="true"></span>
+                        <p>Find workshops and creative experiences with enough information to decide quickly.</p>
+                      </li>
+                      <li>
+                        <span aria-hidden="true"></span>
+                        <p>Reach creative talent with more context, better fit, and less guesswork.</p>
+                      </li>
+                    </ul>
+                  </article>
+                </div>
+                <p class="clarity-foot">
+                  Underneath that, the platform is built around artwork,
+                  experiences, and talent.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="closing reveal" style="--delay: 0.3s" aria-labelledby="closing-title">
+          <div class="closing-card">
+            <h2 id="closing-title">Get in before it gets noisy.</h2>
+            <p>
+              If this sounds useful, get on the list. We will write when the
+              first release is ready.
+            </p>
+            <a href="#email">Join from the top</a>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <a
+            href="https://www.linkedin.com/company/112099911/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a href="mailto:govinddixit@witzzart.com">
+            Email
+          </a>
+          <span>Launching 2026</span>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const baselineWaitlist = 1284;
+        const countElement = document.getElementById("waitlist-count");
+        const form = document.getElementById("waitlist-form");
+        const emailInput = document.getElementById("email");
+        const submitButton = document.getElementById("submit-button");
+        const statusElement = document.getElementById("form-status");
+        const formatter = new Intl.NumberFormat("en-IN");
+        let liveWaitlist = baselineWaitlist;
+
+        function renderCount(value) {
+          countElement.textContent = formatter.format(value);
+        }
+
+        function animateCount(from, to, duration) {
+          const start = performance.now();
+
+          function frame(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = Math.round(from + (to - from) * eased);
+            renderCount(value);
+
+            if (progress < 1) {
+              requestAnimationFrame(frame);
+            }
+          }
+
+          requestAnimationFrame(frame);
+        }
+
+        function setStatus(message, state) {
+          statusElement.textContent = message;
+          if (state) {
+            statusElement.dataset.state = state;
+          } else {
+            delete statusElement.dataset.state;
+          }
+        }
+
+        function isValidEmail(value) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        }
+
+        async function hydrateWaitlistCount() {
+          try {
+            const response = await fetch("/api/waitlist", { method: "GET" });
+            if (!response.ok) {
+              throw new Error("Count unavailable");
+            }
+
+            const payload = await response.json();
+            const remoteCount = Array.isArray(payload.data) ? payload.data.length : 0;
+            liveWaitlist = baselineWaitlist + remoteCount;
+          } catch (_error) {
+            liveWaitlist = baselineWaitlist;
+          }
+
+          const animatedStart = Math.max(liveWaitlist - 67, 0);
+          animateCount(animatedStart, liveWaitlist, 1500);
+        }
+
+        async function handleSubmit(event) {
+          event.preventDefault();
+
+          const email = emailInput.value.trim();
+
+          if (!isValidEmail(email)) {
+            setStatus("Enter a valid email so we know where to write back.", "error");
+            emailInput.focus();
+            return;
+          }
+
+          submitButton.disabled = true;
+          submitButton.textContent = "Holding your spot...";
+          setStatus("One second. Adding you in.", "");
+
+          try {
+            const response = await fetch("/api/waitlist", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email: email,
+                name: "Witzzart Waitlist",
+                role: "waitlist",
+                organization: "",
+                message: "Joined the pre-launch email waitlist from the inline landing page.",
+              }),
+            });
+
+            const payload = await response.json();
+
+            if (!response.ok || !payload.success) {
+              throw new Error(payload.message || "Something went wrong.");
+            }
+
+            const previousCount = liveWaitlist;
+            liveWaitlist += 1;
+            animateCount(previousCount, liveWaitlist, 900);
+            form.reset();
+            setStatus("You're in. We'll write when Witzzart is ready.", "");
+          } catch (error) {
+            const message =
+              error instanceof Error && error.message
+                ? error.message
+                : "Could not join the waitlist right now.";
+            setStatus(message, "error");
+          } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "Join the waitlist";
+          }
+        }
+
+        renderCount(baselineWaitlist);
+        hydrateWaitlistCount();
+        form.addEventListener("submit", handleSubmit);
+      })();
+    </script>
   </body>
 </html>

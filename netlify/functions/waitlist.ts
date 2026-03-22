@@ -1,6 +1,7 @@
 import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 import { randomUUID } from "crypto";
 import { z } from "zod";
+import { notifyWaitlistSignup } from "../../shared/waitlistNotifications";
 
 // Define the schema for waitlist signup
 const insertWaitlistSignupSchema = z.object({
@@ -69,6 +70,14 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
       };
       
       waitlistSignups.set(id, signup);
+
+      const notificationResult = await notifyWaitlistSignup(signup);
+      if (notificationResult.errors.length > 0) {
+        console.error(
+          "Waitlist signup saved but notifications failed:",
+          notificationResult.errors,
+        );
+      }
       
       return {
         statusCode: 201,

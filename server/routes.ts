@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertWaitlistSignupSchema } from "@shared/schema";
+import { notifyWaitlistSignup } from "../shared/waitlistNotifications";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Waitlist signup endpoint
@@ -12,6 +13,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Save to storage
       const signup = await storage.createWaitlistSignup(validatedData);
+
+      const notificationResult = await notifyWaitlistSignup(signup);
+      if (notificationResult.errors.length > 0) {
+        console.error(
+          "Waitlist signup saved but notifications failed:",
+          notificationResult.errors,
+        );
+      }
       
       res.status(201).json({ 
         success: true, 
