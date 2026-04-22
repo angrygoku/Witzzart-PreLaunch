@@ -1,3 +1,5 @@
+import nodemailer from "nodemailer";
+
 type WaitlistNotificationSignup = {
   id: string;
   name: string;
@@ -17,9 +19,9 @@ type NotificationResult = {
 };
 
 type NotificationConfig = {
-  resendApiKey: string | null;
-  resendFromEmail: string | null;
-  resendToEmail: string;
+  gmailUser: string | null;
+  gmailAppPassword: string | null;
+  notifyEmailTo: string;
   twilioAccountSid: string | null;
   twilioAuthToken: string | null;
   twilioWhatsAppFrom: string | null;
@@ -30,9 +32,9 @@ let missingConfigWarningShown = false;
 
 function readConfig(env: NodeJS.ProcessEnv): NotificationConfig {
   return {
-    resendApiKey: env.RESEND_API_KEY || null,
-    resendFromEmail: env.RESEND_FROM_EMAIL || null,
-    resendToEmail: env.WAITLIST_NOTIFY_EMAIL_TO || "govinddixit@witzzart.com",
+    gmailUser: env.GMAIL_USER || null,
+    gmailAppPassword: env.GMAIL_APP_PASSWORD || null,
+    notifyEmailTo: env.NOTIFY_EMAIL_TO || "support@witzzart.com",
     twilioAccountSid: env.TWILIO_ACCOUNT_SID || null,
     twilioAuthToken: env.TWILIO_AUTH_TOKEN || null,
     twilioWhatsAppFrom: env.TWILIO_WHATSAPP_FROM || null,
@@ -54,7 +56,6 @@ function formatDate(value: Date | string): string {
   if (Number.isNaN(date.getTime())) {
     return "Unknown";
   }
-
   return date.toISOString();
 }
 
@@ -106,30 +107,33 @@ function buildWhatsAppBody(signup: WaitlistNotificationSignup): string {
   ].join("\n");
 }
 
-async function sendResendEmail(
+async function sendGmailEmail(
   signup: WaitlistNotificationSignup,
   config: NotificationConfig,
 ): Promise<void> {
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${config.resendApiKey}`,
-      "Content-Type": "application/json",
-      "Idempotency-Key": `waitlist-email-${signup.id}`,
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: config.gmailUser,
+      pass: config.gmailAppPassword,
     },
-    body: JSON.stringify({
-      from: config.resendFromEmail,
-      to: [config.resendToEmail],
-      subject: buildEmailSubject(signup),
-      text: buildEmailText(signup),
-      html: buildEmailHtml(signup),
-      replyTo: signup.email,
-    }),
   });
 
-  if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`Resend email failed: ${response.status} ${body}`);
+  const mailOptions = {
+    from: config.gmailUser,
+    to: config.notifyEmailTo,
+    subject: buildEmailSubject(signup),
+    text: buildEmailText(signup),
+    html: buildEmailHtml(signup),
+    replyTo: signup.email,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+  } catch (error) {
+    throw new Error(
+      `Gmail email failed: ${error instanceof Error ? error.message : String(error)}`
+    );
   }
 }
 
@@ -170,7 +174,7 @@ export async function notifyWaitlistSignup(
   env: NodeJS.ProcessEnv = process.env,
 ): Promise<NotificationResult> {
   const config = readConfig(env);
-  const emailConfigured = Boolean(config.resendApiKey && config.resendFromEmail);
+  const emailConfigured = Boolean(config.gmailUser && config.gmailAppPassword);
   const whatsappConfigured = Boolean(
     config.twilioAccountSid &&
       config.twilioAuthToken &&
@@ -180,7 +184,7 @@ export async function notifyWaitlistSignup(
   if (!missingConfigWarningShown && !emailConfigured && !whatsappConfigured) {
     missingConfigWarningShown = true;
     console.warn(
-      "Waitlist notifications are not configured. Set Resend and/or Twilio env vars to enable alerts.",
+      "Waitlist notifications are not configured. Set Gmail and/or Twilio env vars to enable alerts.",
     );
   }
 
@@ -200,7 +204,7 @@ export async function notifyWaitlistSignup(
 
   if (emailConfigured) {
     tasks.push(
-      sendResendEmail(signup, config)
+      sendGmailEmail(signup, config)
         .then(() => {
           result.delivered.email = true;
         })
